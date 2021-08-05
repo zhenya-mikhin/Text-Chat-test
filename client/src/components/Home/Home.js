@@ -1,9 +1,10 @@
 import {useState, useRef} from 'react'
 import {Link} from 'react-router-dom'
 import {useLocalStorage} from 'hooks'
+import {Form, Button} from 'react-bootstrap'
 import styled from 'styled-components'
 
-export const Home = () => {
+export function Home() {
     // создаем и записываем в локальное хранилище имя пользователя
     // или извлекаем его из хранилища
     const [userName, setUserName] = useLocalStorage(`userName`)
@@ -22,36 +23,41 @@ export const Home = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         linkRef.current.click()
-	 }
+    }
 
-	return (
-		<form className='mt-5 text-center' onSubmit={handleSubmit}>
-			<div>
-				<label for={userName} >Name:</label>
-				<input id={userName} placeholder='Your name' value={userName} onChange={handleChangeName} />  
-			</div>
-			{userName && (
-				<CustomButton className='mx-auto' to={`/${roomId}`} ref={linkRef}>
-					Join
-				</CustomButton>
-			)}
-		</form>
-	)   
+    return (
+        <Form className='mt-5'
+              style={{maxWidth: '320px', margin: '0 auto'}}
+              onSubmit={handleSubmit}
+        >
+            <Form.Group>
+                <Form.Label>Name:</Form.Label>
+                <Form.Control placeholder='Your name' value={userName} onChange={handleChangeName} />  
+            </Form.Group>
+            {userName && (
+                <CustomButton variant='succes'
+                        as={Link}
+                        to={`/${roomId}`}
+                        ref={linkRef}
+                >
+                    Join
+                </CustomButton>
+            )}
+        </Form>
+    )   
 }
 
+const CustomButton = styled(Button)`
+    display: block;
 
+    margin-top: 1em;
+    width: 80px;
+    height: 35px;
+    border-radius: 5px;
+    background-color: green;
 
-const CustomButton = styled(Link)`
-	display: block;
-
-	margin-top: 1em;
-	width: 80px;
-	height: 35px;
-	border-radius: 5px;
-	background-color: green;
-
-	text-align: center;
-	padding: 5px 0;
-	color: white;
-	text-decoration: none;
+    text-align: center;
+    padding: 5px 0;
+    color: white;
+    text-decoration: none;
 `

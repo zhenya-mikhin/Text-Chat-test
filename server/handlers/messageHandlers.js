@@ -13,14 +13,14 @@ db.defaults({
 			messageId: '1',
 			userId: '1',
 			senderName: 'Lupa',
-			messageText: 'Have you started the test task?',
+			messageText: 'What are you doing here?',
 			createdAt: '2021-07-28'
 		},
 		{
 			messageId: '2',
 			userId: '2',
 			senderName: 'Pupa',
-			messageText: 'Yeap, almost finished!',
+			messageText: 'I came for a salary!',
 			createdAt: '2021-07-28'
     	}
   	]

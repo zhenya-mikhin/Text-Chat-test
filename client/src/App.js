@@ -1,10 +1,11 @@
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import {Container} from 'react-bootstrap'
-import {Home} from 'components'
+import {Home, ChatRoom, VideoChat} from 'components'
 
 // маршруты
 const routes = [
 	{path: '/', name: 'Home', Component: Home},
+	{path: '/:roomId', name: 'ChatRoom', Component: ChatRoom}
 ]
 
 export const App = () => (
